@@ -1,9 +1,9 @@
 DESCRIPTION = "Tasktracker UI application"
-LICENSE = "CLOSED"
-#LIC_FILES_CHKSUM = "file://COPYING;md5=0b517682c7617713822d978dd663ea09"
+LICENSE = "LGPLv2"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/git/COPYING;md5=0b517682c7617713822d978dd663ea09"
 PATCHTOOL = "git"
 SRC_URI = "gitsm://github.com/salmmike/tasktracker.git;branch=master;protocol=https;"
-SRCREV = "e0ec97886e0ec1d1f526a86999c292bc2b88f970"
+SRCREV = "bdd8da2be256937d9c69b19d8497e2910d349625"
 
 SRC_URI:append = " file://001-remove-clang-tidy.patch "
 
@@ -15,7 +15,17 @@ DEPENDS += " qtbase \
              qtquick3d \
              qthttpserver \
              sqlite3 \
-             gtest \
              fmt "
 
-inherit pkgconfig cmake qt6-cmake
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE:${PN} = "start-tasktracker.service"
+
+SRC_URI:append = " file://start-tasktracker.service "
+FILES_${PN} += "${systemd_unitdir}/system/start-tasktracker.service"
+
+do_install:append() {
+  install -d ${D}/${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/start-tasktracker.service ${D}/${systemd_unitdir}/system
+}
+
+inherit pkgconfig cmake qt6-cmake systemd
