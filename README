@@ -5,18 +5,8 @@ Please see the corresponding sections below for details.
 Dependencies
 ============
 
-  URI: <first dependency>
-  branch: <branch name>
-
-  URI: <second dependency>
-  branch: <branch name>
-
-  .
-  .
-  .
-
-Patches
-=======
+  URI: https://github.com/YoeDistro/meta-qt6.git
+  branch: yoe/6.6
 
 
 Maintainer: Mike Salmela
@@ -35,4 +25,5 @@ Run 'bitbake-layers add-layer meta-tasktracker'
 
 II. Misc
 ========
-Layer for tasktracker Linux distro
+Layer for tasktracker Linux distro.
+Provides distro `tasktracker`, image `tasktracker-image` and the Tasktracker applications.
