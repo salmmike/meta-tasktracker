@@ -4,8 +4,10 @@ After=multi-user.target local-fs.target weston.service
 [Service]
 Type=simple
 Restart=no
-ExecStart=/bin/su weston -c /usr/bin/tasktracker
-Environment="DISPLAY=:0"
+ExecStart=/usr/bin/tasktracker
+Environment=XDG_RUNTIME_DIR=/run/user/0
+Environment=WAYLAND_DISPLAY=/run/wayland-0
+
 
 [Install]
 WantedBy=multi-user.target

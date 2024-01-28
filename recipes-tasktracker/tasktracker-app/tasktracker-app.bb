@@ -12,6 +12,7 @@ S = "${WORKDIR}/git"
 DEPENDS += " qtbase \
              qtdeclarative \
              qtdeclarative-native \
+             qtwayland \
              qtquick3d \
              qthttpserver \
              sqlite3 \
@@ -27,5 +28,7 @@ do_install:append() {
   install -d ${D}/${systemd_unitdir}/system
   install -m 0644 ${WORKDIR}/start-tasktracker.service ${D}/${systemd_unitdir}/system
 }
+
+EXTRA_OECMAKE += "-DQT_FEATURE_egl=ON -DFEATURE_opengl=ON"
 
 inherit pkgconfig cmake qt6-cmake systemd
