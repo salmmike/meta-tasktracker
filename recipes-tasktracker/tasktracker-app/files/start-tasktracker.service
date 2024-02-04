@@ -2,11 +2,14 @@
 After=multi-user.target local-fs.target weston.service
 
 [Service]
+User=weston
 Type=simple
-Restart=no
+Restart=always
+ExecStartPre=ping -c 1 google.com
 ExecStart=/usr/bin/tasktracker
 Environment=XDG_RUNTIME_DIR=/run/user/0
 Environment=WAYLAND_DISPLAY=/run/wayland-0
+RestartSec=5
 
 
 [Install]
