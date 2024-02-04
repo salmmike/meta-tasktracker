@@ -1,0 +1,12 @@
+[Unit]
+After=start-tasktracker.service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/tasktrackerwebui
+ResetSec=5
+
+[Install]
+WantedBy=start-tasktracker.service
+
