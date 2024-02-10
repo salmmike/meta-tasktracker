@@ -5,7 +5,7 @@ After=start-tasktracker.service
 Type=simple
 Restart=always
 ExecStart=/usr/bin/tasktrackerwebui
-ResetSec=5
+RestartSec=5
 
 [Install]
 WantedBy=start-tasktracker.service
