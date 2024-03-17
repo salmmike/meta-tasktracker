@@ -27,11 +27,11 @@ index 004abba..0fd2c25 100644
  set(LIBHEADERS
      ${INCDIR}database_driver.h
 diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
-index a7de1e5..78cf032 100644
+index 03acfb0..c09619f 100644
 --- a/src/app/CMakeLists.txt
 +++ b/src/app/CMakeLists.txt
-@@ -4,11 +4,6 @@ set(CMAKE_AUTOMOC ON)
- include_directories(${PROJECT_SOURCE_DIR}/lib/include/)
+@@ -6,11 +6,6 @@ include_directories(${PROJECT_SOURCE_DIR}/lib/include/
+ 
  find_package(Qt6 REQUIRED COMPONENTS Core Quick HttpServer)
  
 -set(CMAKE_CXX_CLANG_TIDY

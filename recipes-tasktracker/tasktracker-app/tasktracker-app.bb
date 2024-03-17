@@ -23,15 +23,20 @@ SYSTEMD_SERVICE:${PN} = "start-tasktracker.service"
 
 SRC_URI:append = " file://start-tasktracker.service "
 SRC_URI:append = " file://tasktracker.ini "
+SRC_URI:append = " file://weston.ini "
+
 FILES_${PN} += "${systemd_unitdir}/system/start-tasktracker.service"
-FILES_${PN} += "/etc/tasktracker/tasktracker.ini"
+FILES_${PN} += "${sysconfdir}/tasktracker/tasktracker.ini"
+FILES_${PN} += "${sysconfdir}/xgd/weston/weston.ini"
 
 do_install:append() {
   install -d ${D}/${systemd_unitdir}/system
   install -m 0644 ${WORKDIR}/start-tasktracker.service ${D}/${systemd_unitdir}/system
 
-  install -d ${D}/etc/tasktracker/
-  install -m 0644 ${WORKDIR}/tasktracker.ini ${D}/etc/tasktracker/tasktracker.ini
+  install -d ${D}${sysconfdir}/tasktracker/
+  install -d ${D}${sysconfdir}/xgd/weston/
+  install -m 0644 ${WORKDIR}/tasktracker.ini ${D}${sysconfdir}/tasktracker/tasktracker.ini
+  install -m 0644 ${WORKDIR}/weston.ini ${D}${sysconfdir}/xgd/weston
 }
 
 EXTRA_OECMAKE += "-DQT_FEATURE_egl=ON -DFEATURE_opengl=ON"
