@@ -1,4 +1,4 @@
-obj-m += dummy_driver.o
+obj-m += gpio_expansion_driver.o
 
 SRC := $(shell pwd)
 

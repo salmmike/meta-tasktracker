@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 inherit module
 
 SRC_URI = "file://Makefile \
-          file://dummy_driver.c \
+          file://gpio_expansion_driver.c \
           "
 
 S = "${WORKDIR}"
@@ -13,5 +13,5 @@ S = "${WORKDIR}"
 # The inherit of module.bbclass will automatically name module packages with
 # "kernel-module-" prefix as required by the oe-core build environment.
 
-RPROVIDES_${PN} += "kernel-module-dummy_driver"
+RPROVIDES_${PN} += "kernel-module-gpio_expansion_driver"
 

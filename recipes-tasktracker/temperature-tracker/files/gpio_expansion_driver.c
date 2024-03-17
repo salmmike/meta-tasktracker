@@ -5,7 +5,7 @@
 #include <linux/gpio/consumer.h>
 #include <linux/platform_device.h>
 
-struct gpio_desc *red, *green;
+struct gpio_desc *gpio14;
 
 static int gpio_init_probe(struct platform_device *pdev)
 {
@@ -13,17 +13,16 @@ static int gpio_init_probe(struct platform_device *pdev)
 
    printk("GPIO example init\n");
 
-   /* "greenled" label is matching the device tree declaration. OUT_LOW is the value at init */
-   green = devm_gpiod_get(&pdev->dev, "greenled", GPIOD_OUT_LOW);
+   /* "gpioexpansion" label is matching the device tree declaration. OUT_LOW is the value at init */
+   gpio14 = devm_gpiod_get(&pdev->dev, "gpioexpansion", GPIOD_OUT_LOW);
 
-   /* blink of the green led */
    while (i < 10)
    {
 	ssleep(1);
-	gpiod_set_value(green, 1);
+	gpiod_set_value(gpio14, 1);
 
 	ssleep(1);
-	gpiod_set_value(green, 0);
+	gpiod_set_value(gpio14, 0);
 
 	i++;
    }
@@ -40,24 +39,24 @@ static int gpio_exit_remove(struct platform_device *pdev)
 
 /* this structure does the matching with the device tree */
 /* if it does not match the compatible field of DT, nothing happens */
-static struct of_device_id dummy_match[] = {
-    {.compatible = "st,dummy"},
+static struct of_device_id gpio_expansion_match[] = {
+    {.compatible = "st,gpioexpansion"},
     {/* end node */}
 };
 
-static struct platform_driver dummy_driver = {
+static struct platform_driver gpio_expansion_driver = {
     .probe = gpio_init_probe,
     .remove = gpio_exit_remove,
     .driver = {
-        .name = "dummy_driver",
+        .name = "gpio_expansion_driver",
                 .owner = THIS_MODULE,
-                .of_match_table = dummy_match,
+                .of_match_table = gpio_expansion_match,
     }
 };
 
-module_platform_driver(dummy_driver);
+module_platform_driver(gpio_expansion_driver);
 
-MODULE_AUTHOR("Bernard Puel");
+MODULE_AUTHOR("Bernard Puel, Mike Salmela");
 MODULE_DESCRIPTION("Gpio example");
 MODULE_LICENSE("GPL");
-MODULE_ALIAS("platform:dummy_driver");
+MODULE_ALIAS("platform:gpio_expansion_driver");
