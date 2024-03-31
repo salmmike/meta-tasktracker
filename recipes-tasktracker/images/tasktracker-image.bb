@@ -11,7 +11,7 @@ IMAGE_INSTALL:append = " tasktracker-app tasktracker-webui \
 			 qtlocation-qmlplugins qtwayland \
 			 dhcpcd iw wpa-supplicant wireless-regdb-static \
 			 hostapd wifi-ui-configurator temperature-tracker \
-			 libgpiod libgpiod-tools libgpiod-dev"
+			 libgpiod libgpiod-tools libgpiod-dev swupdate swupdate-www "
 
 MACHINE_FEATURES:append = " wifi "
 
