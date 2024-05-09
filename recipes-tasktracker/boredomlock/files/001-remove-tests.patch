@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6843e2d..51da285 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,4 +13,3 @@ enable_testing()
+ 
+ add_subdirectory(src)
+ add_subdirectory(simpleini)
+-add_subdirectory(test)
+diff --git a/simpleini/CMakeLists.txt b/simpleini/CMakeLists.txt
+index 9961d4a..dadae50 100644
+--- a/simpleini/CMakeLists.txt
++++ b/simpleini/CMakeLists.txt
+@@ -9,7 +9,5 @@ add_compile_options(-Wall -Wextra -Wpedantic)
+ 
+ set (CMAKE_FLAGS "-DINSTALL_GTEST=OFF")
+ 
+-enable_testing()
+ 
+ add_subdirectory(include)
+-add_subdirectory(test)
+

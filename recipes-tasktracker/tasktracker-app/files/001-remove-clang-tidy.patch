@@ -26,22 +26,6 @@ index 004abba..0fd2c25 100644
  set(INCDIR ${CMAKE_CURRENT_LIST_DIR}/include/)
  set(LIBHEADERS
      ${INCDIR}database_driver.h
-diff --git a/src/app/CMakeLists.txt b/src/app/CMakeLists.txt
-index 03acfb0..c09619f 100644
---- a/src/app/CMakeLists.txt
-+++ b/src/app/CMakeLists.txt
-@@ -6,11 +6,6 @@ include_directories(${PROJECT_SOURCE_DIR}/lib/include/
- 
- find_package(Qt6 REQUIRED COMPONENTS Core Quick HttpServer)
- 
--set(CMAKE_CXX_CLANG_TIDY
--    clang-tidy;
--    -header-filter=.;
--    -extra-arg=-std=c++20)
--
- add_executable(tasktracker
-     main.cpp
-     include/TaskListModel.h
 diff --git a/simpleini/CMakeLists.txt b/simpleini/CMakeLists.txt
 index 9961d4a..dadae50 100644
 --- a/simpleini/CMakeLists.txt
@@ -54,17 +38,4 @@ index 9961d4a..dadae50 100644
  
  add_subdirectory(include)
 -add_subdirectory(test)
-diff --git a/simpleini/include/CMakeLists.txt b/simpleini/include/CMakeLists.txt
-index 7be7944..8ee47e2 100644
---- a/simpleini/include/CMakeLists.txt
-+++ b/simpleini/include/CMakeLists.txt
-@@ -7,7 +7,4 @@ target_include_directories(
-     .
- )
- 
--set(CMAKE_CXX_CLANG_TIDY
--    clang-tidy;
--    -header-filter=.;
--    -extra-arg=-std=c++20)
-+
 

@@ -5,8 +5,6 @@ PATCHTOOL = "git"
 SRC_URI = "gitsm://github.com/salmmike/tasktracker.git;branch=master;protocol=https;"
 SRCREV = "${AUTOREV}"
 
-SRC_URI:append = " file://001-remove-clang-tidy.patch "
-
 S = "${WORKDIR}/git"
 
 DEPENDS += " qtbase \
@@ -16,7 +14,8 @@ DEPENDS += " qtbase \
              qtquick3d \
              qthttpserver \
              sqlite3 \
-             fmt "
+             fmt \
+	     boredomlock "
 
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE:${PN} = "start-tasktracker.service"
@@ -24,6 +23,7 @@ SYSTEMD_SERVICE:${PN} = "start-tasktracker.service"
 SRC_URI:append = " file://start-tasktracker.service "
 SRC_URI:append = " file://tasktracker.ini "
 SRC_URI:append = " file://weston.ini "
+SRC_URI:append = " file://001-remove-clang-tidy.patch "
 
 FILES_${PN} += "${systemd_unitdir}/system/start-tasktracker.service"
 FILES_${PN} += "${sysconfdir}/tasktracker/tasktracker.ini"
